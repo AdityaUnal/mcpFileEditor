@@ -28,31 +28,30 @@ class MCPClient:
 
         return response.json()
 
-    def create_file(self, file_name, folder_path=None):
+    def create_file(self, file_name, folder_path, base_folder):
         try:
-            params = {"folder_path": folder_path} if folder_path else {}
+            base_folder_path = base_folder
+            if folder_path is not None:
+                base_folder_path = os.path.join(base_folder,folder_path)
+            if not os.path.exists(base_folder_path):
+                os.makedirs(base_folder_path)
+            file_name = os.path.join(base_folder_path,file_name)
             url = f"{self.base_url}/create/file/{file_name}"
-            logging.info(f"Post request made to {self.base_url}/create/file/{file_name}")
-            response = requests.post(url, params=params)
+            logging.info(f"Post request made to {url}")
+            return requests.post(url)
         except Exception as e:
             logging.error(f"Excpetion occured while creating a file : {e}")
-        return response
 
 
     def delete_file(self, file_path, base_folder):
         try :
             file_path = os.path.join(base_folder,file_path)
-            file_path = os.path.join(base_folder,file_path)
             url = f"{self.base_url}/delete/file/{file_path}"
             logging.info(f"delete request made to {url}")
-            response = requests.delete(url)
+            return requests.delete(url)
         except Exception as e:
             logging.error(f"Excpetion occured while deleting the file : {e}")
-        return response
 
-    def delete_folder(self, folder_path):
-        url = f"{self.base_url}/delete/folder/{folder_path}"
-        return requests.delete(url).json()
 
     def read_file(self, file_path,base_folder):
         try :
@@ -61,9 +60,9 @@ class MCPClient:
             logging.info(f"read request made to {url}")
             response = requests.get(url)
             logging.info(f"Content succesfully recieved.")
+            return response.json()
         except Exception as e:
             logging.error("Error : ", e)
-        return response.json()
 
     def edit_file(self, file_path, new_content,base_folder):
         try :
@@ -72,7 +71,7 @@ class MCPClient:
             logging.info(f"edit request made to {url}")
             data = {"content": new_content}
             response = requests.post(url,json = data).json()
+            return response
             logging.info(f"Contents succesfully edited.")
         except Exception as e:
             logging.error("Error : ", e)
-        return response

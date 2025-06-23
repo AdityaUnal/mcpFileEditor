@@ -41,6 +41,8 @@ with st.sidebar:
     clicked = st.button('Browse Folder')
     
 if clicked:
+    if 'dirname' in st.session_state:
+        shutil.rmtree(st.session_state['dirname'])
     dirname = str(filedialog.askdirectory(master=root))
     if dirname:
         response = client.upload_folder(dirname)
@@ -55,10 +57,10 @@ if 'dirname' in st.session_state:
 
     st.subheader("Create a New File")
     file_name = st.text_input("Enter new file name (e.g., myfile.txt):")
-    folder_path = st.text_input("Enter directory (optional, relative to base, e.g., temp_folder or fast_api/hello):")
+    folder_path = st.text_input("Enter directory (optional, relative to base, e.g., insidedemo\hello):")
     if st.button("Create File"):
         if file_name:
-            response = client.create_file(file_name, folder_path if folder_path else None)
+            response = client.create_file(file_name, folder_path if folder_path else None,dirname)
             if response and response.status_code==HTTP_201_CREATED:
                 st.rerun()  # This will rerun the script from the top
             elif response:

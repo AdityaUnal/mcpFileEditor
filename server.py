@@ -69,25 +69,15 @@ def find_directory(target_dir_name, start_path='.'):
     
 
 @ app.post("/create/file/{file_name}")
-async def create_file(file_name: str,folder_path: Union[str,None] = None):
+async def create_file(file_name: str):
     try:
-        start_from = os.getcwd()  # or any base path
-        found_path = find_directory("temp_folder", start_from)
-        base_folder_path = found_path
-        if(folder_path == None):
-            file_path = os.path.join(found_path,file_name)
-        else :
-            base_folder_path = os.path.join(found_path,folder_path)
-            file_path = os.path.join(base_folder_path,file_name)
-        if not os.path.exists(base_folder_path):
-            os.makedirs(base_folder_path)
-        logging.info(f"Request recieved to create {file_name} at {file_path}")
-        with open(file_path, "x") as file:
+        logging.info(f"Request recieved to create {file_name} .")
+        with open(file_name, "x") as file:
             logging.info(f"{file_name} created successfully")
-        response = JSONResponse(content={"message": f"{file_name} created in {base_folder_path}"}, status_code=status.HTTP_201_CREATED)
+        response = JSONResponse(content={"message": f"{file_name} created ."}, status_code=status.HTTP_201_CREATED)
     except FileExistsError:
-        logging.error(f"{file_name} already exists in {found_path}")
-        response = JSONResponse(content={"message": f"{file_name} already exists in {base_folder_path}"}, status_code=status.HTTP_400_BAD_REQUEST)
+        logging.error(f"{file_name} already exists .")
+        response = JSONResponse(content={"message": f"{file_name} already exists ."}, status_code=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
         logging.error(f"While creating file : {e}")
         response = JSONResponse(content={"message": f"While creating file : {e}"}, status_code=status.HTTP_400_BAD_REQUEST)
