@@ -42,7 +42,11 @@ with st.sidebar:
     
 if clicked:
     if 'dirname' in st.session_state:
-        shutil.rmtree(st.session_state['dirname'])
+        dest = filedialog.askdirectory(master=root, title="Select a destination to save the current directory")
+        if dest:
+            shutil.move(st.session_state['dirname'], dest)
+        else:
+            shutil.rmtree(st.session_state['dirname'])
     dirname = str(filedialog.askdirectory(master=root))
     if dirname:
         response = client.upload_folder(dirname)
