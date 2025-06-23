@@ -1,5 +1,5 @@
-
-### Create file
-- Can create a file in the base folder(default) or a folder of user's choice.
-- returns http status code 401 if succesful.
-- return https code 400 BAD request if
+# File Editor
+- This is a simple mcp based file editor.
+- You can easily upload the folder you want to work on.
+- Play with the files and folders inside.
+- Follow these steps to run the application. It is better to be in a [virtual environment]([url](https://docs.python.org/3/library/venv.html)) for this.
