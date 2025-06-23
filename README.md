@@ -19,8 +19,10 @@ streamlit run app.py
 ### Deleting a file
 ![image](https://github.com/user-attachments/assets/936895aa-3dce-4bdd-9e54-4ee4599c23c1)
 ### Editing a file
+- Before :
+![image](https://github.com/user-attachments/assets/a597815a-d498-4fc4-9b23-19d760d38ae2)
+- After :
 ![image](https://github.com/user-attachments/assets/5119cd51-cb9d-4267-981a-74b9678c8855)
-![image](https://github.com/user-attachments/assets/97b24c58-10f9-4be2-a85b-2d47034daf82)
 
 
 
