@@ -43,7 +43,7 @@ with st.sidebar:
 if clicked:
     dirname = str(filedialog.askdirectory(master=root))
     if dirname:
-        response = client.create_folder(dirname)
+        response = client.upload_folder(dirname)
         st.session_state['dirname'] = response["path"]
 
 # Use the stored dirname if available

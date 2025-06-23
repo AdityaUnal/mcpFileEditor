@@ -29,7 +29,7 @@ async def healthcheck():
 base_folder = os.getcwd()
 
 @app.post("/create/folder/")
-async def create_folder(file: UploadFile = File(...)):
+async def upload_folder(file: UploadFile = File(...)):
     try:
         # Save uploaded zip temporarily
         with tempfile.NamedTemporaryFile(delete=False, suffix=".zip") as tmp:
@@ -66,6 +66,7 @@ def find_directory(target_dir_name, start_path='.'):
             return os.path.join(root, target_dir_name)
     return None
 
+    
 
 @ app.post("/create/file/{file_name}")
 async def create_file(file_name: str,folder_path: Union[str,None] = None):

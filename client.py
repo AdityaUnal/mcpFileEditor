@@ -14,7 +14,7 @@ class MCPClient:
     def __init__(self, base_url="http://127.0.0.1:8000"):
         self.base_url = base_url
 
-    def create_folder(self, folder_path):
+    def upload_folder(self, folder_path):
         try:
             zip_path = shutil.make_archive("temp_folder", 'zip', folder_path)
             with open(zip_path, "rb") as f:
