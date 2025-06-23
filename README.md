@@ -10,7 +10,8 @@ streamlit run app.py
 ```
 
 ## Flow
-![image](https://github.com/user-attachments/assets/21671e6b-0356-4b93-aa24-010964ed0559)
+![image](https://github.com/user-attachments/assets/189049ce-1f0a-49a2-9cad-b078ceb6aed4)
+
 
 ## Some Screenshots
 ![image](https://github.com/user-attachments/assets/6dca7840-e533-4c55-b2cc-700f63a5a568)
