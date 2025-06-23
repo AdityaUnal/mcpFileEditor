@@ -1,7 +1,8 @@
 # File Editor
 - This is a simple mcp based file editor.
 - You can easily upload the folder you want to work on.
-- Play with the files and folders inside.
+- Play with the files and folders inside
+- When you are bored with one directory, save it or discard it and move on.
 - Follow these steps to run the application. It is better to be in a [virtual environment](https://docs.python.org/3/library/venv.html) for this.
 ```shell
 pip install -r requirements.txt
@@ -24,8 +25,6 @@ streamlit run app.py
 ![image](https://github.com/user-attachments/assets/a597815a-d498-4fc4-9b23-19d760d38ae2)
 - After :
 ![image](https://github.com/user-attachments/assets/5119cd51-cb9d-4267-981a-74b9678c8855)
-
-
 
 
 
